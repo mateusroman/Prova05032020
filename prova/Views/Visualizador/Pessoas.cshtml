@@ -1,0 +1,43 @@
+﻿@using prova.Models
+@model List<Pessoa>
+@{
+    ViewData["Title"] = "Pessoas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Funcionario</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var pessoa in Model)
+        {
+            <tr>
+                <td>@pessoa.Id</td>
+                <td>@pessoa.Nome</td>
+                <td>@(pessoa.Funcionario ? "Sim" : "Não")</td>
+                <td>
+                    <a class="waves-effect waves-light btn" style="width:50px"
+                       asp-area="" asp-controller="Pessoas" asp-action="Editar" asp-route-id="@pessoa.Id">
+                        <i class="material-icons left">edit</i>
+                    </a>
+                    <a class="waves-effect waves-light btn" style="width:50px"
+                       asp-area="" asp-controller="Pessoas" asp-action="Visualizar" asp-route-id="@pessoa.Id">
+                        <i class="material-icons left">assignment</i>
+                    </a>
+                    <a class="waves-effect waves-light btn" style="width:50px"
+                       asp-area="" asp-controller="Pessoas" asp-action="Excluir" asp-route-id="@pessoa.Id">
+                        <i class="material-icons left">delete_forever</i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

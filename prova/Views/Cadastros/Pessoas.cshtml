@@ -1,0 +1,78 @@
+﻿@using prova.ViewModels;
+@model PessoaViewModel
+
+@{
+    ViewData["Title"] = "Pessoas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 0; padding: 0;">
+    <div>
+        <div class="card blue-grey darken-4" style="position:absolute; bottom: 0; top: 0; margin: 0; width: 100%; height: 100%;">
+            <div class="card-content white-text">
+                <span class="card-title center-align">@Model.TituloPagina</span>
+                <div class="row">
+                    <form class="col s12"
+                          asp-area="" asp-controller="Pessoas" asp-action="Cadastrar">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Nome" id="nomePessoa" type="text" class="validate" style="color:white;">
+                                <label for="nomePessoa">Nome da Pessoa</label>
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="DataNascimento" id="dataNascimento" type="date" class="validate" style="color:white;">
+                                <label for="dataNascimento">Data de Nascimento</label>
+                                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="CPF" id="CPF" type="text" class="validate" style="color:white;">
+                                <label for="CPF">CPF</label>
+                                <span asp-validation-for="CPF" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <select asp-for="Funcionario" id="funcionario" class="validate" style="color:white;">
+                                    <option value="@true" style="color:white">Sim</option>
+                                    <option value="@false" style="color:white">Não</option>
+                                </select>
+                                <label for="funcionario">Funcionario</label>
+                            </div>
+
+                            <input asp-for="Id" type="hidden">
+                            <input asp-for="EstaVisualizando" type="hidden">
+                            <input asp-for="TituloPagina" type="hidden">
+                        </div>
+                        <div class="card-action center-align">
+                            @if (!Model.EstaVisualizando)
+                            {
+                                <a class="card orange accent-4 btn"
+                                   asp-area="" asp-controller="Cadastros" asp-action="Index">
+                                    Voltar
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="card orange accent-4 btn"
+                                   asp-area="" asp-controller="Visualizador" asp-action="Pessoas">
+                                    Voltar
+                                </a>
+                            }
+                            @if (!Model.EstaVisualizando)
+                            {
+                                <button class="card deep-orange accent-4 btn" type="submit">
+                                    Cadastrar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            }
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Excessao))
+                        {
+                            <span>@Model.Excessao</span>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

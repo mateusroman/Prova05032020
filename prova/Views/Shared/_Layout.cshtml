@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gerenciador de Projetos</title>
+    <link rel="stylesheet" href="~/lib/materialize/css/materialize.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper blue-grey darken-4">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo" style="margin-left: 10px">GPro</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a asp-area="" asp-controller="Cadastros" asp-action="Index">Cadastros</a></li>
+                    <li><a asp-area="" asp-controller="Visualizador" asp-action="Index">Visualização</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a asp-area="" asp-controller="Cadastros" asp-action="Index">Cadastros</a></li>
+            <li><a asp-area="" asp-controller="Visualizador" asp-action="Index">Visualização</a></li>
+        </ul>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="page-footer blue-grey darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Prova</h5>
+                    <p class="grey-text text-lighten-4">Prova desenvolvida com Materialize</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" target="_blank" href="https://www.linkedin.com/in/mateus-roman-360aa611a/">LinkedIn MRoman</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Prova
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/materialize/js/materialize.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

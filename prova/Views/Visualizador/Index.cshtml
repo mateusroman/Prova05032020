@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav>
+    <div class="nav-wrapper blue-grey darken-4">
+        <div class="col s12" style="margin-left: 10px;">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="breadcrumb">Home</a>
+            <a href="#!" class="breadcrumb">Visualizar</a>
+        </div>
+    </div>
+</nav>
+
+<table class="responsive-table">
+    <tbody>
+        <tr>
+            <td class="center-align" style="height: 100px" ;>
+                <a class="blue-grey darken-4 btn" style="width:200px;"
+                   asp-area="" asp-controller="Visualizador" asp-action="Pessoas">
+                    <i class="material-icons left">account_circle</i>PESSOAS
+                </a>
+            </td>
+            <td class="center-align" style="height: 100px" ;>
+                <a class="blue-grey darken-4 btn" style="width:200px;"
+                   asp-area="" asp-controller="Visualizador" asp-action="Projetos">
+                    <i class="material-icons left">assignment</i>PROJETOS
+                </a>
+            </td>
+            <td class="center-align" style="height: 100px" ;>
+                <a class="blue-grey darken-4 btn" style="width:200px;"
+                   asp-area="" asp-controller="Visualizador" asp-action="Membros">
+                    <i class="material-icons left">assignment</i>MEMBROS
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

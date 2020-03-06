@@ -1,0 +1,104 @@
+﻿@using prova.ViewModels;
+@model ProjetoViewModel
+
+@{
+    ViewData["Title"] = "Projetos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 0; padding: 0;">
+    <div>
+        <div class="card blue-grey darken-4" style="position:absolute; bottom: 0; top: 0; margin: 0; width: 100%; height: 100%;">
+            <div class="card-content white-text">
+                <span class="card-title center-align">@Model.TituloPagina</span>
+                <div class="row">
+                    <form class="col s12"
+                          asp-area="" asp-controller="Projetos" asp-action="Cadastrar">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Nome" id="nomeProjeto" type="text" class="validate" style="color:white;">
+                                <label for="nomeProjeto">Nome do Projeto</label>
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="DataInicio" id="dataInicio" type="date" class="validate" style="color:white;">
+                                <label for="dataInicio">Data de Início</label>
+                                <span asp-validation-for="DataInicio" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <select id="gerente" asp-for="GerenteSelecionado" asp-items="Model.GerentesSelectListItem"></select>
+                                <label for="gerente">Gerente</label>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="DataPrevisaoFim" id="dataPrevisaoFim" type="date" class="validate" style="color:white;">
+                                <label for="dataPrevisaoFim">Data de Previsão</label>
+                                <span asp-validation-for="DataPrevisaoFim" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="DataFim" id="dataFim" type="date" class="validate" style="color:white;">
+                                <label for="dataFim">Data Final</label>
+                                <span asp-validation-for="DataFim" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="Orcamento" id="orcamento" type="number" class="validate" style="color:white;">
+                                <label for="orcamento">Orçamento</label>
+                                <span asp-validation-for="Orcamento" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <input asp-for="Descricao" id="descricao" type="text" class="validate" style="color:white;">
+                                <label for="descricao">Descrição</label>
+                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                            </div>
+                            <div class="input-field">
+                                <select asp-for="Status" id="status" class="validate" style="color:white;">
+                                    <option value="Em Análise" style="color:white">Em Análise</option>
+                                    <option value="Análise Realizada" style="color:white">Análise Realizada</option>
+                                    <option value="Análise Aprovada" style="color:white">Análise Aprovada</option>
+                                    <option value="Iniciado" style="color:white">Iniciado</option>
+                                    <option value="Planejado" style="color:white">Planejado</option>
+                                    <option value="Em Andamento" style="color:white">Em Andamento</option>
+                                    <option value="Encerrado" style="color:white">Encerrado</option>
+                                    <option value="Cancelado" style="color:white">Cancelado</option>
+                                </select>
+                                <label for="status">Status</label>
+                            </div>
+
+                            <input asp-for="Id" type="hidden">
+                            <input asp-for="EstaVisualizando" type="hidden">
+                            <input asp-for="TituloPagina" type="hidden">
+                        </div>
+                        <div class="card-action center-align">
+                            @if (!Model.EstaVisualizando)
+                            {
+                                <a class="card orange accent-4 btn"
+                                   asp-area="" asp-controller="Cadastros" asp-action="Index">
+                                    Voltar
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="card orange accent-4 btn"
+                                   asp-area="" asp-controller="Usuario" asp-action="Usuarios">
+                                    Voltar
+                                </a>
+                            }
+                            @if (!Model.EstaVisualizando)
+                            {
+                                <button class="card deep-orange accent-4 btn" type="submit">
+                                    Cadastrar
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            }
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Excessao))
+                        {
+                            <span>@Model.Excessao</span>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
